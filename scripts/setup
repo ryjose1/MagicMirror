@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# Repo setup
+cd .. && npm install
+
+# Server start script
+cp scripts/magic-mirror /usr/local/bin/
+chmod +x /usr/local/bin/magic-mirror
+
+# Service file
+cp scripts/mirror.service /lib/systemd/system/
+chmod 644 /lib/systemd/system/mirror.service
+systemctl daemon-reload
+systemctl enable mirror.service
